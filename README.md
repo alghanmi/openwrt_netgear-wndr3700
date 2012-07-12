@@ -21,12 +21,14 @@ Apparently, there are three versions of WNDR3700. The version could be determine
 
 #### Backup of Current Configuration Backup
 If your device is currently using a version of OpenWRT, you can backup your configuration by either:
+
 1. Backing up all your configuration files
-```bash
+```
 tar czvf /tmp/openwrt-$(uci get system.@system[0].hostname)_$(date -I).tar.gz /etc/config /lib/config
 ```
+
 1. Exporting your [UCI](http://wiki.openwrt.org/doc/uci) configuration
-```bash
+```
 uci export > openwrt-$(uci get system.@system[0].hostname)_$(date -I).uci.conf
 ```
 
@@ -58,8 +60,8 @@ passwd
 exit
 ```
 
-1. 1. Transfer `openwrt-config.sh`, `network.conf` and `device.list` to the router
-```bash
+1. Transfer `openwrt-config.sh`, `network.conf` and `device.list` to the router
+```
 scp openwrt-config.sh network.conf device.list root@192.168.1.1:
 ```
 
