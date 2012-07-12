@@ -1,0 +1,11 @@
+##
+## List of devices on the network
+##
+
+## DHCP list
+# Hostname	IP Address		MAC Address
+desktop		10.0.0.25		11:22:33:44:55:66
+
+## Local DNS list
+# Hostname	IP Address
+openwrt-router		10.0.0.1
