@@ -32,6 +32,9 @@ uci set wireless.radio0.txpower=22
 uci set wireless.radio0.channel=6
 uci delete wireless.radio0.disabled
 
+## Radio [5GHz]
+uci set wireless.radio1.country="$COUNTRY"
+
 ## Wifi [2GHz]
 uci add wireless wifi-iface
 uci set wireless.@wifi-iface[-1].device=radio0
