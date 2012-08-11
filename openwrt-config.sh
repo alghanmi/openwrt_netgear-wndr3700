@@ -10,7 +10,7 @@ uci commit
 
 ## Update & Install Packages
 opkg update
-opkg install qos-scripts ddns-scripts miniupnpd uhttpd-mod-tls curl l7-protocols luci-ssl luci-app-qos
+opkg install qos-scripts ddns-scripts miniupnpd uhttpd-mod-tls curl l7-protocols kmod-leds-wndr3700-usb luci-ssl luci-app-qos
 
 ## System Configuration
 uci set system.@system[0].hostname="$HOST_NAME"
