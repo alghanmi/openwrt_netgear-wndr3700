@@ -29,7 +29,7 @@ tar czvf /tmp/openwrt-$(uci get system.@system[0].hostname)_$(date -I).tar.gz /e
 
 1. Exporting your [UCI](http://wiki.openwrt.org/doc/uci) configuration
 ```
-uci export > openwrt-$(uci get system.@system[0].hostname)_$(date -I).uci.conf
+uci export > /tmp/openwrt-$(uci get system.@system[0].hostname)_$(date -I).uci.conf
 ```
 
 ### OpenWRT on WNDR3700 Documentation
