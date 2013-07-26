@@ -5,18 +5,26 @@ This is a guide on how to install and configure the latest stable [OpenWRT](http
 > OpenWrt is a highly extensible GNU/Linux distribution for embedded devices. Unlike many other distributions for these routers, OpenWrt is built from the ground up to be a full-featured, easily modifiable operating system for your router. In practice, this means that you can have all the features you need with none of the bloat, powered by a Linux kernel that's more recent than most other distributions.
 -- [OpenWRT Wiki](http://wiki.openwrt.org/about/start)
 
-Currently, the latest OpenWRT stable release is [Backfire 10.03.1](http://downloads.openwrt.org/backfire/10.03.1/). The firmware for the WNDR3700 is in the [ar71xx](http://downloads.openwrt.org/backfire/10.03.1/ar71xx/) directory:
-+ openwrt-ar71xx-wndr3700-jffs2-factory.img
-+ openwrt-ar71xx-wndr3700-jffs2-sysupgrade.bin
-+ openwrt-ar71xx-wndr3700-squashfs-factory.img
-+ openwrt-ar71xx-wndr3700-squashfs-sysupgrade.bin
+Currently, the latest OpenWRT stable release is [Attitude Adjustment 12.09](http://downloads.openwrt.org/attitude_adjustment/12.09/). The firmware for the WNDR3700 is in the [`ar71xx/generic`](http://downloads.openwrt.org/attitude_adjustment/12.09/ar71xx/generic/) directory:
+  + openwrt-ar71xx-generic-wndr3700-jffs2-factory-NA.img
+  + openwrt-ar71xx-generic-wndr3700-jffs2-factory.img
+  + openwrt-ar71xx-generic-wndr3700-jffs2-sysupgrade.bin
+  + openwrt-ar71xx-generic-wndr3700-squashfs-factory-NA.img
+  + openwrt-ar71xx-generic-wndr3700-squashfs-factory.img
+  + openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin
+  + openwrt-ar71xx-generic-wndr3700**v2**-jffs2-factory.img
+  + openwrt-ar71xx-generic-wndr3700**v2**-jffs2-sysupgrade.bin
+  + openwrt-ar71xx-generic-wndr3700**v2**-squashfs-factory.img
+  + openwrt-ar71xx-generic-wndr3700**v2**-squashfs-sysupgrade.bin
+
+Unlike the previous OpenWRT stable rlease ([Backfire 10.3](http://downloads.openwrt.org/backfire/10.03.1/)), there are two seprate images for the WNDR3700. Check the [Determining Your WNDR3700 version](#determining-your-wndr3700-version) section for details on how to check which version you own.
 
 The _factory_ image is used to flash devices with the original factory firmware installed whereas the _sysupgrade_ image is used to flash over an existing custom firmware. You have the choice of using one of two file systems [_jffs2_](http://wiki.openwrt.org/doc/techref/filesystems#jffs2) or [_squashfs_](http://wiki.openwrt.org/doc/techref/filesystems#squashfs). [Squashfs](http://wiki.openwrt.org/doc/techref/filesystems#squashfs) is the preferred choice by OpenWRT developers.
 
 ## Pre-Requisites
 Before flashing your WNDR3700, you will need to determine the correction hardware version, backup your current configuration, read the OpenWRT documentation on the flashing of your hardware.
 
-#### Determining Your WNDR3700 version
+#### Determining Your WNDR3700 Version
 Apparently, there are three versions of WNDR3700. The version could be determined through notation on the product packaging or via the initial factory firmware. I am a proud owner of a **v1**. You would need to know which version your own because each version required a different firmware. This Netgear Forums post illustrates how to distinguish between v1 and v2 of the WNDR3700: [Netgear Forums - 3700 box pics how to tell v1 or v2](http://forum1.netgear.com/showthread.php?t=62784).
 
 #### Backup of Current Configuration Backup
@@ -47,8 +55,8 @@ Follows is a list of resources on how to install and configure OpenWRT on your d
 1. Upgrade your Firmware. ssh to your router and run the following commands:
 ```bash
 cd /tmp
-wget http://downloads.openwrt.org/backfire/10.03.1/ar71xx/openwrt-ar71xx-wndr3700-squashfs-sysupgrade.bin
-sysupgrade -v openwrt-ar71xx-wndr3700-squashfs-sysupgrade.bin
+wget http://downloads.openwrt.org/attitude_adjustment/12.09/ar71xx/generic/openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin
+sysupgrade -v openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin
 ```
 The `-n` option could be used when you don't wish save configuration between flashes.
 
