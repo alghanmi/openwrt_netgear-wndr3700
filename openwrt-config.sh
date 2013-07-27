@@ -102,10 +102,10 @@ uci set qos.wan.download="$DOWNLOAD_SPEED"	# Download speed in kBits/s
 uci set qos.wan.enabled=1
 uci set qos.wan.overhead=1
 
-## Add NameCheap.com DDNS
+## Add NameCheap.com (SSL) DDNS
+## -- The http-based NameCheap DDNS is now part of OpenWRT
 echo "" >> /usr/lib/ddns/services
-echo "# Namecheap.com Dynamic DNS Service" >> /usr/lib/ddns/services
-echo "\"namecheap.com\" \"http://dynamicdns.park-your-domain.com/update?host=[USERNAME]&domain=[DOMAIN]&password=[PASSWORD]&ip=[IP]\""  >> /usr/lib/ddns/services
+echo "# Namecheap.com Dynamic DNS Service (SSL)" >> /usr/lib/ddns/services
 echo "\"namecheap.com (ssl)\" \"https://dynamicdns.park-your-domain.com/update?host=[USERNAME]&domain=[DOMAIN]&password=[PASSWORD]&ip=[IP]\""  >> /usr/lib/ddns/services
 
 ## Install GeoTrust & Equifax Certificates
