@@ -12,10 +12,10 @@ Currently, the latest OpenWRT stable release is [Attitude Adjustment 12.09](http
   + openwrt-ar71xx-generic-wndr3700-squashfs-factory-NA.img
   + openwrt-ar71xx-generic-wndr3700-squashfs-factory.img
   + openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin
-  + openwrt-ar71xx-generic-wndr3700**v2**-jffs2-factory.img
-  + openwrt-ar71xx-generic-wndr3700**v2**-jffs2-sysupgrade.bin
-  + openwrt-ar71xx-generic-wndr3700**v2**-squashfs-factory.img
-  + openwrt-ar71xx-generic-wndr3700**v2**-squashfs-sysupgrade.bin
+  + openwrt-ar71xx-generic-wndr3700v2-jffs2-factory.img
+  + openwrt-ar71xx-generic-wndr3700v2-jffs2-sysupgrade.bin
+  + openwrt-ar71xx-generic-wndr3700v2-squashfs-factory.img
+  + openwrt-ar71xx-generic-wndr3700v2-squashfs-sysupgrade.bin
 
 Unlike the previous OpenWRT stable rlease ([Backfire 10.3](http://downloads.openwrt.org/backfire/10.03.1/)), there are two seprate images for the WNDR3700. Check the [Determining Your WNDR3700 version](#determining-your-wndr3700-version) section for details on how to check which version you own.
 
@@ -53,19 +53,23 @@ Follows is a list of resources on how to install and configure OpenWRT on your d
 1. Edit `network.conf` to your liking. Make sure to edit the SSID (i.e. network name) and key.
 
 1. Upgrade your Firmware. ssh to your router and run the following commands:
+
 ```bash
 #Move to temp directory
 cd /tmp
+
 #Download file and checksum
 wget http://downloads.openwrt.org/attitude_adjustment/12.09/ar71xx/generic/openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin
 wget http://downloads.openwrt.org/attitude_adjustment/12.09/ar71xx/generic/md5sums
 grep openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin md5sums > openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin.md5
+
 #Check file integrity
 md5sum -c openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin.md5
 
 #Perform upgrade
 sysupgrade -n -v openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin
 ```
+
 The `-n` option is used when you don't wish save configuration between flashes.
 
 ## Configuring Your Device
