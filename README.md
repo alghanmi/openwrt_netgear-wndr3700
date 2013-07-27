@@ -54,11 +54,19 @@ Follows is a list of resources on how to install and configure OpenWRT on your d
 
 1. Upgrade your Firmware. ssh to your router and run the following commands:
 ```bash
+#Move to temp directory
 cd /tmp
+#Download file and checksum
 wget http://downloads.openwrt.org/attitude_adjustment/12.09/ar71xx/generic/openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin
-sysupgrade -v openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin
+wget http://downloads.openwrt.org/attitude_adjustment/12.09/ar71xx/generic/md5sums
+grep openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin md5sums > openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin.md5
+#Check file integrity
+md5sum -c openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin.md5
+
+#Perform upgrade
+sysupgrade -n -v openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin
 ```
-The `-n` option could be used when you don't wish save configuration between flashes.
+The `-n` option is used when you don't wish save configuration between flashes.
 
 ## Configuring Your Device
 1. Initial login - Initially, you login to your device using telnet and only use that to reset your password. After that, you use SSH to access the machine. The default ip for OpenWRT is `192.168.1.1`
