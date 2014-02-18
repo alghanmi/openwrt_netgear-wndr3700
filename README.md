@@ -93,6 +93,17 @@ sh openwrt-config.sh
 
 1. *Enjoy!!!*
 
+###Notes
+####Dynamic DNS
+The script adds support for [CloudFlare.com](https://www.cloudflare.com) client API and [NameCheap.com](https://www.namecheap.com/) DDNS service over SSL (NameCheap non-SSL support is already included). In order to support SSL, the script manually installed the required root certificates to make the DDNS service work. In your `network.conf` file, you should choose the appropriate certificate for the service you are using. Namely:
+  + NameCheap.com: `GeoTrust_Global_CA.pem`
+  + CloudFlare.com: `GlobalSign_Root_R1.pem`
+
+If you wish to debug the DDNS service, you can run the following command
+```bash
+/usr/lib/ddns/dynamic_dns_updater.sh myddns
+```
+
 ### Disclaimer
 Although I am a proponent of custom firmware, I must mention that you should take extreme caution when flashing a device and you should do that at your own risk since it may result in undesirable consequences such as bricking your device if not done properly.
 

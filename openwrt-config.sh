@@ -108,10 +108,18 @@ echo "" >> /usr/lib/ddns/services
 echo "# Namecheap.com Dynamic DNS Service (SSL)" >> /usr/lib/ddns/services
 echo "\"namecheap.com (ssl)\" \"https://dynamicdns.park-your-domain.com/update?host=[USERNAME]&domain=[DOMAIN]&password=[PASSWORD]&ip=[IP]\""  >> /usr/lib/ddns/services
 
-## Install GeoTrust & Equifax Certificates
+## Add CloudFlare.com DDNS (via API)
+echo "" >> /usr/lib/ddns/services
+echo "# CloudFlare.com Client API" >> /usr/lib/ddns/services
+echo "\"cloudflare.com\" \"https://www.cloudflare.com/api_json.html?a=DIUP&email=[USERNAME]&tkn=[PASSWORD]&hosts=[DOMAIN]&ip=[IP]\""  >> /usr/lib/ddns/services
+
+
+## Install Root Certificates
 mkdir -p /etc/ssl/certs
+## GeoTrust Certificates (for NameCheap.com)
 curl http://www.geotrust.com/resources/root_certificates/certificates/GeoTrust_Global_CA.pem -o /etc/ssl/certs/GeoTrust_Global_CA.pem
-curl http://www.geotrust.com/resources/root_certificates/certificates/Equifax_Secure_Certificate_Authority.pem -o /etc/ssl/certs/Equifax_Secure_Certificate_Authority.pem
+## GlobalSign Root Certificate (for Cloudflare.com)
+curl http://secure.globalsign.net/cacert/Root-R1.crt -o /etc/ssl/certs/GlobalSign_Root_R1.pem
 
 ## Personal DDNS
 # Debug DDNS via:
@@ -129,7 +137,7 @@ uci set ddns.myddns.force_interval=12
 uci set ddns.myddns.force_unit=hours
 uci set ddns.myddns.enabled=1
 uci set ddns.myddns.use_https=1
-uci set ddns.myddns.cacert=/etc/ssl/certs/GeoTrust_Global_CA.pem
+uci set ddns.myddns.cacert=/etc/ssl/certs/"$DDNS_CERT"
 
 ## Enable Services
 /etc/init.d/uhttpd enable
