@@ -97,10 +97,7 @@ uci set dropbear.@dropbear[0].Interface=lan
 echo $SSH_KEY > /etc/dropbear/authorized_keys
 
 ## QoS
-uci set qos.wan.upload="$UPLOAD_SPEED"		# Upload speed in kBits/s
-uci set qos.wan.download="$DOWNLOAD_SPEED"	# Download speed in kBits/s
-uci set qos.wan.enabled=1
-uci set qos.wan.overhead=1
+
 
 ## Add NameCheap.com (SSL) DDNS
 ## -- The http-based NameCheap DDNS is now part of OpenWRT
