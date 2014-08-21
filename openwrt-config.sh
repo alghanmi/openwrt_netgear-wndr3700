@@ -139,7 +139,7 @@ uci set ddns.myddns.cacert=/etc/ssl/certs/"$DDNS_CERT"
 ## Enable Services
 /etc/init.d/uhttpd enable
 /etc/init.d/miniupnpd enable
-/etc/init.d/qos enable
+#/etc/init.d/qos enable
 
 ## Commit Changes
 uci commit
