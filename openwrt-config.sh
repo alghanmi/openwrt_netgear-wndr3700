@@ -5,6 +5,7 @@
 
 ## Fix Missing DNS Servers
 uci set network.lan.dns="$DNS_SERVERS"
+uci set network.wan.dns="$DNS_SERVERS"
 uci commit
 /etc/init.d/network restart
 
