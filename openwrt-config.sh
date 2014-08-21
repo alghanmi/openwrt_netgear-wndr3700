@@ -67,6 +67,9 @@ for d in $DEVICE_LIST
 		fi
 	done
 
+##Sending DNS list to clients
+dhcp.@dnsmasq[0].server="$DNS_SERVERS"
+
 ## Firewall Redirects
 uci add firewall redirect
 uci set firewall.@redirect[0]._name=ssh_desktop
