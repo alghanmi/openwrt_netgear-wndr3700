@@ -1,19 +1,13 @@
 # OpenWRT Setup on Netgear WNDR3700
 
-This is a guide on how to install and configure the latest stable [OpenWRT](https://openwrt.org/) firmware on the [Netgear WNDR3700](http://www.netgear.com/home/products/wirelessrouters/high-performance/WNDR3700.aspx) wireless dual-band gigabit router. Please read the disclaimer section before attempting to use this guide.
+This is a guide on how to install and configure the latest stable [OpenWRT](https://openwrt.org/) firmware on the [Netgear WNDR3700](http://www.netgear.com/home/products/networking/wifi-routers/wndr3700.aspx) wireless dual-band gigabit router. Please read the disclaimer section before attempting to use this guide.
 
 > OpenWrt is a highly extensible GNU/Linux distribution for embedded devices. Unlike many other distributions for these routers, OpenWrt is built from the ground up to be a full-featured, easily modifiable operating system for your router. In practice, this means that you can have all the features you need with none of the bloat, powered by a Linux kernel that's more recent than most other distributions.
 -- [OpenWRT Wiki](http://wiki.openwrt.org/about/start)
 
-Currently, the latest OpenWRT stable release is [Attitude Adjustment 12.09](http://downloads.openwrt.org/attitude_adjustment/12.09/). The firmware for the WNDR3700 is in the [`ar71xx/generic`](http://downloads.openwrt.org/attitude_adjustment/12.09/ar71xx/generic/) directory:
-  + openwrt-ar71xx-generic-wndr3700-jffs2-factory-NA.img
-  + openwrt-ar71xx-generic-wndr3700-jffs2-factory.img
-  + openwrt-ar71xx-generic-wndr3700-jffs2-sysupgrade.bin
-  + openwrt-ar71xx-generic-wndr3700-squashfs-factory-NA.img
+Currently, the latest OpenWRT stable release is [Barrier Breaker 14.07](http://downloads.openwrt.org/barrier_breaker/14.07/). The firmware for the WNDR3700 is in the [`ar71xx/generic`](http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/) directory:
   + openwrt-ar71xx-generic-wndr3700-squashfs-factory.img
   + openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin
-  + openwrt-ar71xx-generic-wndr3700v2-jffs2-factory.img
-  + openwrt-ar71xx-generic-wndr3700v2-jffs2-sysupgrade.bin
   + openwrt-ar71xx-generic-wndr3700v2-squashfs-factory.img
   + openwrt-ar71xx-generic-wndr3700v2-squashfs-sysupgrade.bin
 
