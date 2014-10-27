@@ -94,7 +94,7 @@ rm -f /etc/uhttpd.crt /etc/uhttpd.key
 
 ## SSH Setup
 uci set dropbear.@dropbear[0].RootPasswordAuth=off
-uci set dropbear.@dropbear[0].Port=51270
+uci set dropbear.@dropbear[0].Port="$SSH_PORT"
 uci set dropbear.@dropbear[0].PasswordAuth=off
 uci set dropbear.@dropbear[0].Interface=lan
 
