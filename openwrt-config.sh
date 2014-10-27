@@ -7,11 +7,12 @@
 uci set network.lan.dns="$DNS_SERVERS"
 uci set network.wan.dns="$DNS_SERVERS"
 uci commit
-/etc/init.d/network restart
+#/etc/init.d/network restart
 
 ## Update & Install Packages
 opkg update
-opkg install qos-scripts ddns-scripts miniupnpd uhttpd-mod-tls curl l7-protocols kmod-leds-wndr3700-usb luci-ssl luci-app-qos
+opkg install qos-scripts ddns-scripts miniupnpd curl kmod-leds-wndr3700-usb
+opkg install luci-ssl luci-base luci-i18n-english luci-lib-httpclient luci-ssl luci-app-qos uhttpd-mod-tls
 
 ## System Configuration
 uci set system.@system[0].hostname="$HOST_NAME"
@@ -69,7 +70,7 @@ for d in $DEVICE_LIST
 	done
 
 ##Sending DNS list to clients
-dhcp.@dnsmasq[0].server="$DNS_SERVERS"
+uci set dhcp.@dnsmasq[0].server="$DNS_SERVERS"
 
 ## Firewall Redirects
 uci add firewall redirect
@@ -118,9 +119,9 @@ echo "\"cloudflare.com\" \"https://www.cloudflare.com/api_json.html?a=DIUP&email
 ## Install Root Certificates
 mkdir -p /etc/ssl/certs
 ## GeoTrust Certificates (for NameCheap.com)
-curl http://www.geotrust.com/resources/root_certificates/certificates/GeoTrust_Global_CA.pem -o /etc/ssl/certs/GeoTrust_Global_CA.pem
+curl -sL http://www.geotrust.com/resources/root_certificates/certificates/GeoTrust_Global_CA.pem -o /etc/ssl/certs/GeoTrust_Global_CA.pem
 ## GlobalSign Root Certificate (for Cloudflare.com)
-curl http://secure.globalsign.net/cacert/Root-R1.crt -o /etc/ssl/certs/GlobalSign_Root_R1.pem
+curl -skL http://secure.globalsign.net/cacert/Root-R1.crt -o /etc/ssl/certs/GlobalSign_Root_R1.pem
 
 ## Personal DDNS
 # Debug DDNS via:

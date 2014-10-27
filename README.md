@@ -6,17 +6,16 @@ This is a guide on how to install and configure the latest stable [OpenWRT](http
 -- [OpenWRT Wiki](http://wiki.openwrt.org/about/start)
 
 Currently, the latest OpenWRT stable release is [Barrier Breaker 14.07](http://downloads.openwrt.org/barrier_breaker/14.07/). The firmware for the WNDR3700 is in the [`ar71xx/generic`](http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/) directory:
+  + openwrt-ar71xx-generic-wndr3700-squashfs-factory-NA.img
   + openwrt-ar71xx-generic-wndr3700-squashfs-factory.img
   + openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin
   + openwrt-ar71xx-generic-wndr3700v2-squashfs-factory.img
   + openwrt-ar71xx-generic-wndr3700v2-squashfs-sysupgrade.bin
 
-Unlike the previous OpenWRT stable rlease ([Backfire 10.3](http://downloads.openwrt.org/backfire/10.03.1/)), there are two seprate images for the WNDR3700. Check the [Determining Your WNDR3700 version](#determining-your-wndr3700-version) section for details on how to check which version you own.
-
-The _factory_ image is used to flash devices with the original factory firmware installed whereas the _sysupgrade_ image is used to flash over an existing custom firmware. You have the choice of using one of two file systems [_jffs2_](http://wiki.openwrt.org/doc/techref/filesystems#jffs2) or [_squashfs_](http://wiki.openwrt.org/doc/techref/filesystems#squashfs). [Squashfs](http://wiki.openwrt.org/doc/techref/filesystems#squashfs) is the preferred choice by OpenWRT developers.
+Unlike OpenWRT [Backfire 10.3](http://downloads.openwrt.org/backfire/10.03.1/), there are two seprate images for the WNDR3700. Check the [Determining Your WNDR3700 version](#determining-your-wndr3700-version) section for details on how to check which version you own. Also, the [jffs2](http://wiki.openwrt.org/doc/techref/filesystems#jffs2) images offered in [Attitude Adjustment 12.09](http://downloads.openwrt.org/attitude_adjustment/12.09/) are no longer offered in the current release. Only [squashfs](http://wiki.openwrt.org/doc/techref/filesystems#squashfs)-based images are made available now.
 
 ## Pre-Requisites
-Before flashing your WNDR3700, you will need to determine the correction hardware version, backup your current configuration, read the OpenWRT documentation on the flashing of your hardware.
+Before flashing your WNDR3700, you will need to [determine the correction hardware version](#determining-your-wndr3700-version), backup your current configuration, read the OpenWRT documentation on the flashing of your hardware.
 
 #### Determining Your WNDR3700 Version
 Apparently, there are three versions of WNDR3700. The version could be determined through notation on the product packaging or via the initial factory firmware. I am a proud owner of a **v1**. You would need to know which version your own because each version required a different firmware. This Netgear Forums post illustrates how to distinguish between v1 and v2 of the WNDR3700: [Netgear Forums - 3700 box pics how to tell v1 or v2](http://forum1.netgear.com/showthread.php?t=62784).
@@ -53,9 +52,9 @@ Follows is a list of resources on how to install and configure OpenWRT on your d
 cd /tmp
 
 #Download file and checksum
-wget http://downloads.openwrt.org/attitude_adjustment/12.09/ar71xx/generic/openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin
-wget http://downloads.openwrt.org/attitude_adjustment/12.09/ar71xx/generic/md5sums
-grep openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin md5sums > openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin.md5
+curl -sLO http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin
+wget http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/md5sums
+curl -sL http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/md5sums | grep openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin > openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin.md5
 
 #Check file integrity
 md5sum -c openwrt-ar71xx-generic-wndr3700-squashfs-sysupgrade.bin.md5
@@ -90,8 +89,8 @@ sh openwrt-config.sh
 ###Notes
 ####Dynamic DNS
 The script adds support for [CloudFlare.com](https://www.cloudflare.com) client API and [NameCheap.com](https://www.namecheap.com/) DDNS service over SSL (NameCheap non-SSL support is already included). In order to support SSL, the script manually installed the required root certificates to make the DDNS service work. In your `network.conf` file, you should choose the appropriate certificate for the service you are using. Namely:
-  + NameCheap.com: `GeoTrust_Global_CA.pem`
-  + CloudFlare.com: `GlobalSign_Root_R1.pem`
+  + [NameCheap.com](https://www.namecheap.com/support/knowledgebase/category.aspx/11/dynamic-dns): [`GeoTrust_Global_CA.pem`](https://www.geotrust.com/resources/root-certificates/)
+  + [CloudFlare.com](https://www.cloudflare.com/resources-downloads): [`GlobalSign_Root_R1.pem`](https://www.globalsign.com/repository/ca-certificates/)
 
 If you wish to debug the DDNS service, you can run the following command
 ```bash
