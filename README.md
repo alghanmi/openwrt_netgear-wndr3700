@@ -87,6 +87,12 @@ sh openwrt-config.sh
 1. *Enjoy!!!*
 
 ###Notes
+####Wiki Pages
+  + [Mounting USB Storage](https://github.com/alghanmi/openwrt_netgear-wndr3700/wiki/Mounting-USB-Storage)
+  + [Public Key Authentication in Dropbear](https://github.com/alghanmi/openwrt_netgear-wndr3700/wiki/Public-Key-Authentication-in-Dropbear)
+  + [TFTP Server on Your OpenWRT Router](https://github.com/alghanmi/openwrt_netgear-wndr3700/wiki/TFTP-Server-on-Your-OpenWRT-Router)
+
+
 ####Dynamic DNS
 The script adds support for [CloudFlare.com](https://www.cloudflare.com) client API and [NameCheap.com](https://www.namecheap.com/) DDNS service over SSL (NameCheap non-SSL support is already included). In order to support SSL, the script manually installed the required root certificates to make the DDNS service work. In your `network.conf` file, you should choose the appropriate certificate for the service you are using. Namely:
   + [NameCheap.com](https://www.namecheap.com/support/knowledgebase/category.aspx/11/dynamic-dns): [`GeoTrust_Global_CA.pem`](https://www.geotrust.com/resources/root-certificates/)
